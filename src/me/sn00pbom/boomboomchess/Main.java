@@ -1,20 +1,45 @@
 package me.sn00pbom.boomboomchess;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import me.sn00pbom.boomboomchess.util.Inputs;
+import me.sn00pbom.boomboomchess.util.Numbers;
+//import me.sn00pbom.boomboomchess.ChessClient.*;
+
+import java.util.Scanner;
 
 public class Main {
 
-    public static WebDriver webDriver;
+    private static final int numBots = 1;
 
     public static void main(String[] args) {
 
-//        System.setProperty("webdriver.chrome.driver", "chromedriver");
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
+//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+
+        System.out.println(Numbers.rngInt(10000000,99999999));
+
         
 
-        webDriver = new ChromeDriver();
-        webDriver.get("http://www.amazon.com/");
+        AccountController accountController = new AccountController();
+        accountController.populateBots(Inputs.getInt("Enter number of bots: "));
+
+        Scanner in = new Scanner(System.in);
+        String input;
+        while(true){
+            System.out.println("startall, stopall");
+            input = in.nextLine();
+            if(input.equals("startall")){
+                accountController.startAll();
+            }else if(input.equals("stopall")){
+                accountController.stopAll();
+            }else if(input.equals("quit")){
+                //System.exit(0);
+            }else{
+                System.out.println("Not a command");
+            }
+        }
+
+
+
     }
 
 }
