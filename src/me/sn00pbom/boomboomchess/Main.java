@@ -4,6 +4,7 @@ import me.sn00pbom.boomboomchess.util.Inputs;
 import me.sn00pbom.boomboomchess.util.Numbers;
 //import me.sn00pbom.boomboomchess.ChessClient.*;
 
+
 import java.util.Scanner;
 
 public class Main {
@@ -19,8 +20,8 @@ public class Main {
 
         
 
-        AccountController accountController = new AccountController();
-        accountController.populateBots(Inputs.getInt("Enter number of bots: "));
+        //AccountController accountController = new AccountController();
+        AccountController.populateBots(Inputs.getInt("Enter number of bots: "));
 
         Scanner in = new Scanner(System.in);
         String input;
@@ -28,9 +29,9 @@ public class Main {
             System.out.println("startall, stopall");
             input = in.nextLine();
             if(input.equals("startall")){
-                accountController.startAll();
+                AccountController.startAll();
             }else if(input.equals("stopall")){
-                accountController.stopAll();
+                AccountController.stopAll();
             }else if(input.equals("quit")){
                 //System.exit(0);
             }else{
